@@ -33,7 +33,11 @@
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            animation: gradientShift 3s ease-in-out infinite, fadeOut 1s ease-out 3s forwards;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        .loading-unique.fade-out {
+            animation: fadeOut 1s ease-out forwards;
         }
 
         @keyframes gradientShift {
@@ -1371,6 +1375,17 @@
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
+            // Hide loading screen after 3 seconds
+            setTimeout(() => {
+                const loadingScreen = document.querySelector('.loading-unique');
+                if (loadingScreen) {
+                    loadingScreen.classList.add('fade-out');
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 1000);
+                }
+            }, 3000);
+            
             // Create particles
             createParticles();
             

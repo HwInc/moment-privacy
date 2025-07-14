@@ -575,6 +575,134 @@
             letter-spacing: 1px;
         }
 
+        /* Unique FAQ Section */
+        .faq-unique {
+            padding: 150px 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            position: relative;
+        }
+
+        .faq-unique::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #1a1a1a);
+        }
+
+        .faq-container-unique {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item-unique {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .faq-item-unique:nth-child(1) { animation-delay: 3s; }
+        .faq-item-unique:nth-child(2) { animation-delay: 3.2s; }
+        .faq-item-unique:nth-child(3) { animation-delay: 3.4s; }
+        .faq-item-unique:nth-child(4) { animation-delay: 3.6s; }
+        .faq-item-unique:nth-child(5) { animation-delay: 3.8s; }
+
+        .faq-item-unique:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.2);
+            border-color: rgba(255, 107, 157, 0.3);
+        }
+
+        .faq-question-unique {
+            padding: 30px 35px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: white;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .faq-question-unique:hover {
+            background: rgba(255, 107, 157, 0.1);
+            color: #FF6B9D;
+        }
+
+        .faq-question-unique.active {
+            background: rgba(255, 107, 157, 0.15);
+            color: #FF6B9D;
+        }
+
+        .faq-icon-unique {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon-unique::before,
+        .faq-icon-unique::after {
+            content: '';
+            position: absolute;
+            background: #FF6B9D;
+            transition: all 0.3s ease;
+        }
+
+        .faq-icon-unique::before {
+            width: 2px;
+            height: 24px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .faq-icon-unique::after {
+            width: 24px;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .faq-question-unique.active .faq-icon-unique::before {
+            transform: translateX(-50%) rotate(90deg);
+            opacity: 0;
+        }
+
+        .faq-answer-unique {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: rgba(255, 107, 157, 0.05);
+        }
+
+        .faq-answer-unique.active {
+            max-height: 200px;
+            padding: 0 35px 30px;
+        }
+
+        .faq-answer-unique p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
         /* Unique Download Section */
         .download-unique {
             padding: 150px 0;
@@ -897,6 +1025,15 @@
                 padding: 30px 20px;
             }
             
+            .faq-question-unique {
+                padding: 25px 25px;
+                font-size: 1.1rem;
+            }
+            
+            .faq-answer-unique.active {
+                padding: 0 25px 25px;
+            }
+            
             .feature-icon-unique {
                 width: 70px;
                 height: 70px;
@@ -1177,6 +1314,7 @@
                 <ul class="nav-menu-unique">
                     <li><a href="#features">Features</a></li>
                     <li><a href="#stats">Stats</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#download">Download</a></li>
                 </ul>
             </nav>
@@ -1241,6 +1379,64 @@
         </div>
     </section>
 
+    <!-- Unique FAQ Section -->
+    <section class="faq-unique" id="faq">
+        <div class="container-unique">
+            <h2 class="section-title-unique scroll-animate-unique">Frequently Asked Questions</h2>
+            <div class="faq-container-unique">
+                <div class="faq-item-unique">
+                    <button class="faq-question-unique">
+                        How does AI Smart Detection work?
+                        <div class="faq-icon-unique"></div>
+                    </button>
+                    <div class="faq-answer-unique">
+                        <p>Our AI analyzes facial expressions, group dynamics, lighting conditions, and composition in real-time. It learns your preferences and automatically captures moments when everyone looks their best. The system gets smarter with every photo, ensuring you never miss perfect moments.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-unique">
+                    <button class="faq-question-unique">
+                        What makes Emotional Storytelling unique?
+                        <div class="faq-icon-unique"></div>
+                    </button>
+                    <div class="faq-answer-unique">
+                        <p>Unlike other apps, Moments creates meaningful narratives from your photos. Our AI analyzes emotions, context, relationships, and activities to generate personalized stories that capture the true essence of your experiences. Each story is unique to you and your memories.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-unique">
+                    <button class="faq-question-unique">
+                        How does Privacy-First Sharing protect me?
+                        <div class="faq-icon-unique"></div>
+                    </button>
+                    <div class="faq-answer-unique">
+                        <p>You have 5 privacy levels: Public, Friends, Family, Private, and Anonymous. Set expiration times, encrypt content, and even share anonymously. We never track your data, and you can revoke access anytime. Your memories, your complete control.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-unique">
+                    <button class="faq-question-unique">
+                        Can I share moments without revealing my identity?
+                        <div class="faq-icon-unique"></div>
+                    </button>
+                    <div class="faq-answer-unique">
+                        <p>Yes! Our Anonymous sharing mode removes all personal information, location data, and faces while preserving the emotional essence of your moment. Perfect for sharing experiences without compromising privacy.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item-unique">
+                    <button class="faq-question-unique">
+                        How does the app learn my preferences?
+                        <div class="faq-icon-unique"></div>
+                    </button>
+                    <div class="faq-answer-unique">
+                        <p>Our AI observes which moments you keep, delete, or share, and learns your style preferences. It adapts to your group sizes, preferred expressions, lighting conditions, and activities. The more you use it, the better it becomes at capturing your perfect moments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Unique Download Section -->
     <section class="download-unique" id="download">
         <div class="container-unique">
@@ -1250,7 +1446,12 @@
                 
                 <div class="download-buttons-unique">
                     <a href="https://play.google.com/store/apps/details?id=com.hnv.app.moment" target="_blank" class="download-btn-unique">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMuNjA5MzggMTIuMDAwMDFMMi4wODU5NCAxMS4yNzI3QzEuODk5OTQgMTEuMTgxOCAxLjg5OTk0IDEwLjkwOTEgMi4wODU5NCAxMC44MTgyTDMuNjA5MzggMTAuMDkwOUMzLjY5OTk0IDEwLjA0NTUgMy44MDk5NCAxMC4wNDU1IDMuOTAwNTYgMTAuMDkwOUw1LjQyNDAxIDEwLjgxODJDNS42MTAwMSAxMC45MDkxIDUuNjEwMDEgMTEuMTgxOCA1LjQyNDAxIDExLjI3MjdMNC4wMDA1NiAxMi4wMDAxTDUuNDI0MDEgMTIuNzI3NEM1LjYxMDAxIDEyLjgxODMgNS42MTAwMSAxMy4wOTA5IDUuNDI0MDEgMTMuMTgxOEwzLjkwMDU2IDEzLjkwOTFDMz44MDk5NCAxMy45NTQ1IDMuNjk5OTQgMTMuOTU0NSAzLjYwOTM4IDEzLjkwOTFMMi4wODU5NCAxMy4xODE4QzEuODk5OTQgMTMuMDkwOSAxLjg5OTk0IDEyLjgxODMgMi4wODU5NCAxMi43Mjc0TDMuNjA5MzggMTIuMDAwMVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik02LjQyNDAxIDExLjI3MjdDNi4yMzgwMSAxMS4xODE4IDYuMjM4MDEgMTAuOTA5MSA2LjQyNDAxIDEwLjgxODJMOC4wNDc0NSAxMC4wOTA5QzguMTM4MDEgMTAuMDQ1NSA4LjI0ODAxIDEwLjA0NTUgOC4zMzg2MyAxMC4wOTA5TDkuODYyMDggMTAuODE4MkMxMC4wNDgxIDEwLjkwOTEgMTAuMDQ4MSAxMS4xODE4IDkuODYyMDggMTEuMjcyN0w4LjMzODYzIDEyLjAwMDFMOS44NjIwOCAxMi43Mjc0QzEwLjA0ODEgMTIuODE4MyAxMC4wNDgxIDEzLjA5MDkgOS44NjIwOCAxMy4xODE4TDguMzM4NjMgMTMuOTA5MUM4LjI0ODAxIDEzLjk1NDUgOC4xMzgwMSAxMy45NTQ1IDguMDQ3NDUgMTMuOTA5MUw2LjQyNDAxIDEzLjE4MThDNi4yMzgwMSAxMy4wOTA5IDYuMjM4MDEgMTIuODE4MyA2LjQyNDAxIDEyLjcyNzRMOC4wNDc0NSAxMi4wMDAxTDYuNDI0MDEgMTEuMjcyN1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMS4yNDgxIDEwLjgxODJDMTEuMDYyMSAxMC43MjczIDExLjA2MjEgMTAuNDU0NiAxMS4yNDgxIDEwLjM2MzdMMTIuODcxNSAxMC4wOTA5QzEyLjk2MjEgMTAuMDQ1NSAxMy4wNzIxIDEwLjA0NTUgMTMuMTYyNyAxMC4wOTA5TDE0LjY4NjIgMTAuODE4MkMxNC44NzIyIDEwLjkwOTEgMTQuODcyMiAxMS4xODE4IDE0LjY4NjIgMTEuMjcyN0wxMy4xNjI3IDEyLjAwMDFMMTQuNjg2MiAxMi43Mjc0QzE0Ljg3MjIgMTIuODE4MyAxNC44NzIyIDEzLjA5MDkgMTQuNjg2MiAxMy4xODE4TDEzLjE2MjcgMTMuOTA5MUMxMy4wNzIxIDEzLjk1NDUgMTIuOTYyMSAxMy45NTQ1IDEyLjg3MTUgMTMuOTA5MUwxMS4yNDgxIDEzLjE4MThDMTEuMDYyMSAxMy4wOTA5IDExLjA2MjEgMTIuODE4MyAxMS4yNDgxIDEyLjcyNzRMMTIuODcxNSAxMi4wMDAxTDExLjI0ODEgMTAuODE4MloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNi4wNzIxIDEwLjM2MzdDMTUuODg2MSAxMC4yNzI4IDE1Ljg4NjEgOS45OTk5OSAxNi4wNzIxIDkuOTEwOTlMMTcuNjk1NiA5LjYxODE5QzE3Ljc4NjIgOS41NzI3OSAxNy44OTYyIDkuNTcyNzkgMTcuOTg2OCA5LjYxODE5TDE5LjUxMDMgOS45MTA5OUMxOS42OTYzIDEwLjAwMDkgMTkuNjk2MyAxMC4yNzM4IDE5LjUxMDMgMTAuMzYyOEwxNy45ODY4IDExLjA5MDFMMTkuNTEwMyAxMS44MTczQzE5LjY5NjMgMTEuOTA2MyAxOS42OTYzIDEyLjE3OTIgMTkuNTEwMyAxMi4yNjgyTDE3Ljk4NjggMTIuOTk1NUwxNy44OTYyIDEzLjA0MDlDMTcuNzk2MiAxMy4wODU5IDE3Ljc4NjIgMTMuMDg1OSAxNy42OTU2IDEzLjA0MDlMMTYuMDcyMSAxMi4yNjgyQzE1Ljg4NjEgMTIuMTc5MiAxNS44ODYxIDExLjkwNjMgMTYuMDcyMSAxMS44MTczTDE3LjY5NTYgMTEuMDkwMUwxNi4wNzIxIDEwLjM2MzdaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="Google Play">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.60938 12.00001L2.08594 11.2727C1.89994 11.1818 1.89994 10.9091 2.08594 10.8182L3.60938 10.0909C3.69994 10.0455 3.80994 10.0455 3.90056 10.0909L5.42401 10.8182C5.61001 10.9091 5.61001 11.1818 5.42401 11.2727L4.00056 12.00001L5.42401 12.7274C5.61001 12.8183 5.61001 13.0909 5.42401 13.1818L3.90056 13.9091C3.80994 13.9545 3.69994 13.9545 3.60938 13.9091L2.08594 13.1818C1.89994 13.0909 1.89994 12.8183 2.08594 12.7274L3.60938 12.00001Z" fill="white"/>
+                            <path d="M6.42401 11.2727C6.23801 11.1818 6.23801 10.9091 6.42401 10.8182L8.04745 10.0909C8.13801 10.0455 8.24801 10.0455 8.33863 10.0909L9.86208 10.8182C10.0481 10.9091 10.0481 11.1818 9.86208 11.2727L8.33863 12.00001L9.86208 12.7274C10.0481 12.8183 10.0481 13.0909 9.86208 13.1818L8.33863 13.9091C8.24801 13.9545 8.13801 13.9545 8.04745 13.9091L6.42401 13.1818C6.23801 13.0909 6.23801 12.8183 6.42401 12.7274L8.04745 12.00001L6.42401 11.2727Z" fill="white"/>
+                            <path d="M11.2481 10.8182C11.0621 10.7273 11.0621 10.4546 11.2481 10.3637L12.8715 10.0909C12.9621 10.0455 13.0721 10.0455 13.1627 10.0909L14.6862 10.8182C14.8722 10.9091 14.8722 11.1818 14.6862 11.2727L13.1627 12.00001L14.6862 12.7274C14.8722 12.8183 14.8722 13.0909 14.6862 13.1818L13.1627 13.9091C13.0721 13.9545 12.9621 13.9545 12.8715 13.9091L11.2481 13.1818C11.0621 13.0909 11.0621 12.8183 11.2481 12.7274L12.8715 12.00001L11.2481 10.8182Z" fill="white"/>
+                            <path d="M16.0721 10.3637C15.8861 10.2728 15.8861 9.99999 16.0721 9.91099L17.6956 9.61819C17.7862 9.57279 17.8962 9.57279 17.9868 9.61819L19.5103 9.91099C19.6963 10.0009 19.6963 10.2738 19.5103 10.3628L17.9868 11.0901L19.5103 11.8173C19.6963 11.9063 19.6963 12.1792 19.5103 12.2682L17.9868 12.9955L17.8962 13.0409C17.7962 13.0859 17.7862 13.0859 17.6956 13.0409L16.0721 12.2682C15.8861 12.1792 15.8861 11.9063 16.0721 11.8173L17.6956 11.0901L16.0721 10.3637Z" fill="white"/>
+                        </svg>
                         <div class="btn-text-unique">
                             <span>GET IT ON</span>
                             <small>Google Play</small>
@@ -1258,7 +1459,11 @@
                     </a>
                     
                     <a href="https://play.google.com/store/apps/details?id=com.hnv.app.moment" target="_blank" class="download-btn-unique">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyQzIgMTcuNTIgNi40OCAyMiAxMiAyMkMxNy41MiAyMiAyMiAxNy41MiAyMiAxMkMyMiA2LjQ4IDE3LjUyIDIgMTIgMloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiA2QzE0LjIwOTEgNiAxNiA3Ljc5MDg2IDE2IDEwQzE2IDEyLjIwOTEgMTQuMjA5MSAxNCAxMiAxNEM5Ljc5MDg2IDE0IDggMTIuMjA5MSA4IDEwQzggNy43OTA4NiA5Ljc5MDg2IDYgMTIgNloiIGZpbGw9IiNGRjZCOUQiLz4KPHBhdGggZD0iTTEyIDIwQzE1LjMxMzcgMjAgMTggMTcuMzEzNyAxOCAxNEg2QzYgMTcuMzEzNyA4LjY4NjMgMjAgMTIgMjBaIiBmaWxsPSIjRkY2QjlEIi8+Cjwvc3ZnPgo=" alt="Download">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="white"/>
+                            <path d="M12 6C14.2091 6 16 7.79086 16 10C16 12.2091 14.2091 14 12 14C9.79086 14 8 12.2091 8 10C8 7.79086 9.79086 6 12 6Z" fill="#FF6B9D"/>
+                            <path d="M12 20C15.3137 20 18 17.3137 18 14H6C6 17.3137 8.6863 20 12 20Z" fill="#FF6B9D"/>
+                        </svg>
                         <div class="btn-text-unique">
                             <span>DOWNLOAD</span>
                             <small>Free App</small>
@@ -1483,6 +1688,30 @@
                 timeout = setTimeout(later, wait);
             };
         }
+
+        // FAQ Accordion functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqQuestions = document.querySelectorAll('.faq-question-unique');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isActive = question.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqQuestions.forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('active');
+                    });
+                    
+                    // Toggle current FAQ item
+                    if (!isActive) {
+                        question.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+        });
 
         // Parallax effect for hero section
         window.addEventListener('scroll', () => {

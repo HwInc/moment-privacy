@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moments - Capture Life's Beautiful Moments</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNGRjZCOUQiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSI5LjkiIGZpbGw9IiNGRkZGRkYiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjYuMSIgcj0iMiIgZmlsbD0iI0ZGNkI5RCIvPjxwYXRoIGZpbGw9IiNGRjZCOUQiIGQ9Ik0xNiwxNiBDMTYsMTYgMTIuOSwxMi45IDEyLjksMTAuMyBDMTIuOSw3LjYgMTQuMyw2LjkgMTYsNi45IEMxNy43LDYuOSAxOS4xLDcuNiAxOS4xLDEwLjMgQzE5LjEsMTIuOSAxNiwxNiAxNiwxNiBaIi8+PGNpcmNsZSBjeD0iMTYiIGN5PSI2LjEiIHI9IjEuMSIgZmlsbD0iI0ZGNkI5RCIvPjxjaXJjbGUgY3g9IjI1LjkiIGN5PSIxNiIgcj0iMS4xIiBmaWxsPSIjRkY2QjlEIi8+PGNpcmNsZSBjeD0iMTYiIGN5PSIyNS45IiByPSIxLjEiIGZpbGw9IiNGRjZCOUQiLz48Y2lyY2xlIGN4PSI2LjEiIGN5PSIxNiIgcj0iMS4xIiBmaWxsPSIjRkY2QjlEIi8+PC9zdmc+">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(5deg); }
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FF6B9D;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #FF6B9D;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            animation: heroLogoFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes heroLogoFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #333;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 1.2s; }
+        .feature-card:nth-child(2) { animation-delay: 1.4s; }
+        .feature-card:nth-child(3) { animation-delay: 1.6s; }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 2s; }
+        .stat-item:nth-child(2) { animation-delay: 2.2s; }
+        .stat-item:nth-child(3) { animation-delay: 2.4s; }
+        .stat-item:nth-child(4) { animation-delay: 2.6s; }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .faq-item:nth-child(1) { animation-delay: 3s; }
+        .faq-item:nth-child(2) { animation-delay: 3.2s; }
+        .faq-item:nth-child(3) { animation-delay: 3.4s; }
+        .faq-item:nth-child(4) { animation-delay: 3.6s; }
+        .faq-item:nth-child(5) { animation-delay: 3.8s; }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 107, 157, 0.05);
+            color: #FF6B9D;
+        }
+
+        .faq-question.active {
+            background: rgba(255, 107, 157, 0.1);
+            color: #FF6B9D;
+        }
+
+        .faq-icon {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: #FF6B9D;
+            transition: all 0.3s ease;
+        }
+
+        .faq-icon::before {
+            width: 2px;
+            height: 20px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .faq-icon::after {
+            width: 20px;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .faq-question.active .faq-icon::before {
+            transform: translateX(-50%) rotate(90deg);
+            opacity: 0;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: rgba(255, 107, 157, 0.02);
+        }
+
+        .faq-answer.active {
+            max-height: 200px;
+            padding: 0 30px 25px;
+        }
+
+        .faq-answer p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Download Section */
+        .download {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .download-content {
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out 4s forwards;
+        }
+
+        .download h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .download p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
+        }
+
+        .download-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .download-btn img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .download-btn .btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .download-btn .btn-text small {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .download-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 4.5s forwards;
+        }
+
+        .download-stat {
+            text-align: center;
+        }
+
+        .download-stat .number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .download-stat .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-logo {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .download h2 {
+                font-size: 2rem;
+            }
+            
+            .download p {
+                font-size: 1.1rem;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        /* Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 1s ease-out 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <img src="logo.svg" alt="Moments Logo" class="logo-icon">
+                <span class="logo-text">Moments</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#stats">Stats</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="logo.svg" alt="Moments Logo" class="hero-logo">
+            <h1>Moments</h1>
+            <p>Capture Life's Beautiful Moments</p>
+            <a href="#features" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Moments?</h2>
+            <div class="features-grid">
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">📸</div>
+                    <h3>Smart Capture</h3>
+                    <p>Advanced AI-powered camera that automatically captures the perfect moment with intelligent composition and lighting.</p>
+                </div>
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Share your moments instantly with friends and family using our high-speed sharing technology.</p>
+                </div>
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>Your memories are protected with enterprise-grade security and privacy controls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">10M+</span>
+                    <div class="stat-label">Happy Users</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500M+</span>
+                    <div class="stat-label">Moments Captured</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">99.9%</span>
+                    <div class="stat-label">Uptime</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.8★</span>
+                    <div class="stat-label">App Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How does Moments capture the perfect moment?
+                        <div class="faq-icon"></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Moments uses advanced AI technology to analyze your surroundings in real-time. Our smart camera automatically detects the best composition, lighting, and timing to capture your perfect moment. The app learns from your preferences and gets better with every photo you take.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is my data secure and private?
+                        <div class="faq-icon"></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! We take your privacy seriously. All your photos are encrypted and stored securely. You have complete control over who sees your moments, and we never share your data with third parties. Your memories are yours alone.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How fast is the sharing feature?
+                        <div class="faq-icon"></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our lightning-fast sharing technology allows you to share moments instantly with friends and family. Whether you're using WiFi Direct, Bluetooth, or our cloud sharing, your photos are transferred in seconds, not minutes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I use Moments offline?
+                        <div class="faq-icon"></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Moments works perfectly offline. You can capture, edit, and organize your photos without an internet connection. When you're back online, your photos will sync automatically with your cloud storage.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What devices are supported?
+                        <div class="faq-icon"></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Moments is available on all Android devices running Android 8.0 and above. We optimize the app for each device to ensure the best performance and photo quality, regardless of your phone's specifications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="container">
+            <div class="download-content">
+                <h2>Ready to Capture Your Moments?</h2>
+                <p>Join millions of users who are already capturing and sharing their beautiful moments with our app.</p>
+                
+                <div class="download-buttons">
+                    <a href="https://play.google.com/store/apps/details?id=com.hnv.app.moment" target="_blank" class="download-btn">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMuNjA5MzggMTIuMDAwMDFMMi4wODU5NCAxMS4yNzI3QzEuODk5OTQgMTEuMTgxOCAxLjg5OTk0IDEwLjkwOTEgMi4wODU5NCAxMC44MTgyTDMuNjA5MzggMTAuMDkwOUMzLjY5OTk0IDEwLjA0NTUgMy44MDk5NCAxMC4wNDU1IDMuOTAwNTYgMTAuMDkwOUw1LjQyNDAxIDEwLjgxODJDNS42MTAwMSAxMC45MDkxIDUuNjEwMDEgMTEuMTgxOCA1LjQyNDAxIDExLjI3MjdMNC4wMDA1NiAxMi4wMDAxTDUuNDI0MDEgMTIuNzI3NEM1LjYxMDAxIDEyLjgxODMgNS42MTAwMSAxMy4wOTA5IDUuNDI0MDEgMTMuMTgxOEwzLjkwMDU2IDEzLjkwOTFDMz44MDk5NCAxMy45NTQ1IDMuNjk5OTQgMTMuOTU0NSAzLjYwOTM4IDEzLjkwOTFMMi4wODU5NCAxMy4xODE4QzEuODk5OTQgMTMuMDkwOSAxLjg5OTk0IDEyLjgxODMgMi4wODU5NCAxMi43Mjc0TDMuNjA5MzggMTIuMDAwMVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik02LjQyNDAxIDExLjI3MjdDNi4yMzgwMSAxMS4xODE4IDYuMjM4MDEgMTAuOTA5MSA2LjQyNDAxIDEwLjgxODJMOC4wNDc0NSAxMC4wOTA5QzguMTM4MDEgMTAuMDQ1NSA4LjI0ODAxIDEwLjA0NTUgOC4zMzg2MyAxMC4wOTA5TDkuODYyMDggMTAuODE4MkMxMC4wNDgxIDEwLjkwOTEgMTAuMDQ4MSAxMS4xODE4IDkuODYyMDggMTEuMjcyN0w4LjMzODYzIDEyLjAwMDFMOS44NjIwOCAxMi43Mjc0QzEwLjA0ODEgMTIuODE4MyAxMC4wNDgxIDEzLjA5MDkgOS44NjIwOCAxMy4xODE4TDguMzM4NjMgMTMuOTA5MUM4LjI0ODAxIDEzLjk1NDUgOC4xMzgwMSAxMy45NTQ1IDguMDQ3NDUgMTMuOTA5MUw2LjQyNDAxIDEzLjE4MThDNi4yMzgwMSAxMy4wOTA5IDYuMjM4MDEgMTIuODE4MyA2LjQyNDAxIDEyLjcyNzRMOC4wNDc0NSAxMi4wMDAxTDYuNDI0MDEgMTEuMjcyN1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMS4yNDgxIDEwLjgxODJDMTEuMDYyMSAxMC43MjczIDExLjA2MjEgMTAuNDU0NiAxMS4yNDgxIDEwLjM2MzdMMTIuODcxNSAxMC4wOTA5QzEyLjk2MjEgMTAuMDQ1NSAxMy4wNzIxIDEwLjA0NTUgMTMuMTYyNyAxMC4wOTA5TDE0LjY4NjIgMTAuODE4MkMxNC44NzIyIDEwLjkwOTEgMTQuODcyMiAxMS4xODE4IDE0LjY4NjIgMTEuMjcyN0wxMy4xNjI3IDEyLjAwMDFMMTQuNjg2MiAxMi43Mjc0QzE0Ljg3MjIgMTIuODE4MyAxNC44NzIyIDEzLjA5MDkgMTQuNjg2MiAxMy4xODE4TDEzLjE2MjcgMTMuOTA5MUMxMy4wNzIxIDEzLjk1NDUgMTIuOTYyMSAxMy45NTQ1IDEyLjg3MTUgMTMuOTA5MUwxMS4yNDgxIDEzLjE4MThDMTEuMDYyMSAxMy4wOTA5IDExLjA2MjEgMTIuODE4MyAxMS4yNDgxIDEyLjcyNzRMMTIuODcxNSAxMi4wMDAxTDExLjI0ODEgMTAuODE4MloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNi4wNzIxIDEwLjM2MzdDMTUuODg2MSAxMC4yNzI4IDE1Ljg4NjEgOS45OTk5OSAxNi4wNzIxIDkuOTEwOTlMMTcuNjk1NiA5LjYxODE5QzE3Ljc4NjIgOS41NzI3OSAxNy44OTYyIDkuNTcyNzkgMTcuOTg2OCA5LjYxODE5TDE5LjUxMDMgOS45MTA5OUMxOS42OTYzIDEwLjAwMDkgMTkuNjk2MyAxMC4yNzM4IDE5LjUxMDMgMTAuMzYyOEwxNy45ODY4IDExLjA5MDFMMTkuNTEwMyAxMS44MTczQzE5LjY5NjMgMTEuOTA2MyAxOS42OTYzIDEyLjE3OTIgMTkuNTEwMyAxMi4yNjgyTDE3Ljk4NjggMTIuOTk1NUwxNy44OTYyIDEzLjA0MDlDMTcuNzk2MiAxMy4wODU5IDE3Ljc4NjIgMTMuMDg1OSAxNy42OTU2IDEzLjA0MDlMMTYuMDcyMSAxMi4yNjgyQzE1Ljg4NjEgMTIuMTc5MiAxNS44ODYxIDExLjkwNjMgMTYuMDcyMSAxMS44MTczTDE3LjY5NTYgMTEuMDkwMUwxNi4wNzIxIDEwLjM2MzdaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="Google Play">
+                        <div class="btn-text">
+                            <span>GET IT ON</span>
+                            <small>Google Play</small>
+                        </div>
+                    </a>
+                    
+                    <a href="https://play.google.com/store/apps/details?id=com.hnv.app.moment" target="_blank" class="download-btn">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyQzIgMTcuNTIgNi40OCAyMiAxMiAyMkMxNy41MiAyMiAyMiAxNy41MiAyMiAxMkMyMiA2LjQ4IDE3LjUyIDIgMTIgMloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiA2QzE0LjIwOTEgNiAxNiA3Ljc5MDg2IDE2IDEwQzE2IDEyLjIwOTEgMTQuMjA5MSAxNCAxMiAxNEM5Ljc5MDg2IDE0IDggMTIuMjA5MSA4IDEwQzggNy43OTA4NiA5Ljc5MDg2IDYgMTIgNloiIGZpbGw9IiNGRjZCOUQiLz4KPHBhdGggZD0iTTEyIDIwQzE1LjMxMzcgMjAgMTggMTcuMzEzNyAxOCAxNEg2QzYgMTcuMzEzNyA4LjY4NjMgMjAgMTIgMjBaIiBmaWxsPSIjRkY2QjlEIi8+Cjwvc3ZnPgo=" alt="Download">
+                        <div class="btn-text">
+                            <span>DOWNLOAD</span>
+                            <small>Free App</small>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="download-stats">
+                    <div class="download-stat">
+                        <span class="number">4.8★</span>
+                        <span class="label">App Rating</span>
+                    </div>
+                    <div class="download-stat">
+                        <span class="number">50K+</span>
+                        <span class="label">Downloads</span>
+                    </div>
+                    <div class="download-stat">
+                        <span class="number">Free</span>
+                        <span class="label">No Cost</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Moments. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-animate elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollElements = document.querySelectorAll('.scroll-animate');
+            scrollElements.forEach(el => observer.observe(el));
+        });
+
+        // FAQ Accordion functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isActive = question.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqQuestions.forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('active');
+                    });
+                    
+                    // Toggle current FAQ item
+                    if (!isActive) {
+                        question.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString();
+                }
+            }
+            
+            updateCounter();
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        if (text.includes('M')) {
+                            const number = parseFloat(text.replace('M+', '')) * 1000000;
+                            animateCounter(stat, number);
+                        } else if (text.includes('%')) {
+                            const number = parseFloat(text.replace('%', ''));
+                            animateCounter(stat, number, 1000);
+                        } else if (text.includes('★')) {
+                            // Don't animate rating
+                        } else {
+                            const number = parseFloat(text.replace('+', ''));
+                            animateCounter(stat, number);
+                        }
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const statsSection = document.querySelector('.stats');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        });
+    </script>
+</body>
+</html> 

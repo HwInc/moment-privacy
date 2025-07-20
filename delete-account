@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width'>
+    <title>Delete Account - Moment App</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            padding: 2em;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #d32f2f; }
+        .highlight { background-color: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0; }
+        .important { background-color: #f8d7da; padding: 15px; border-left: 4px solid #dc3545; margin: 20px 0; }
+        .step { background-color: #e8f5e8; padding: 15px; border-left: 4px solid #4caf50; margin: 15px 0; }
+        .contact { background-color: #e3f2fd; padding: 15px; border-left: 4px solid #2196f3; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗑️ Delete Your Moment App Account</h1>
+        
+        <div class="important">
+            <h2>⚠️ Important Notice</h2>
+            <p><strong>Account deletion is permanent and cannot be undone.</strong> All your data will be permanently removed from our servers.</p>
+        </div>
+
+        <h2>📧 How to Request Account Deletion</h2>
+        
+        <div class="step">
+            <h3>Step 1: Send Email Request</h3>
+            <p>Send an email to: <strong>contact.hnv@gmail.com</strong></p>
+            <p>Subject: <strong>"Account Deletion Request"</strong></p>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Include Required Information</h3>
+            <p>In your email, please include:</p>
+            <ul>
+                <li>Your user ID or email address</li>
+                <li>Confirmation that you want to delete your account</li>
+                <li>Whether you want complete deletion or partial data removal</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Wait for Confirmation</h3>
+            <p>We will:</p>
+            <ul>
+                <li>Respond within 48 hours</li>
+                <li>Confirm your deletion request</li>
+                <li>Begin the deletion process</li>
+            </ul>
+        </div>
+
+        <div class="contact">
+            <h2>📞 Contact Information</h2>
+            <p><strong>Email:</strong> contact.hnv@gmail.com</p>
+            <p><strong>Response Time:</strong> Within 48 hours</p>
+            <p><strong>Developer:</strong> Moment App Team</p>
+        </div>
+
+        <h2>🗂️ Data That Will Be Deleted</h2>
+        
+        <div class="highlight">
+            <h3>✅ Complete Account Deletion</h3>
+            <p>When you request complete account deletion, we will remove:</p>
+            <ul>
+                <li><strong>Profile Information:</strong> Name, email, profile picture, bio</li>
+                <li><strong>User Content:</strong> All photos, moments, and captions</li>
+                <li><strong>AI Generated Content:</strong> All AI-generated images and prompts</li>
+                <li><strong>Social Data:</strong> Friend relationships, friend requests</li>
+                <li><strong>Local Network Data:</strong> Discovery history, connection logs</li>
+                <li><strong>Analytics Data:</strong> Usage patterns, app interactions</li>
+                <li><strong>Authentication Data:</strong> Google Sign-In information</li>
+            </ul>
+        </div>
+
+        <h2>⏰ Data Retention Periods</h2>
+        
+        <div class="highlight">
+            <h3>📅 Retention Schedule</h3>
+            <ul>
+                <li><strong>Account Data:</strong> Deleted within 30 days of request</li>
+                <li><strong>Backup Data:</strong> Retained for 90 days (for recovery purposes)</li>
+                <li><strong>Analytics Data:</strong> Anonymized after 1 year, deleted upon request</li>
+                <li><strong>Legal Compliance Data:</strong> Retained as required by law</li>
+                <li><strong>Crash Reports:</strong> Retained for 6 months</li>
+            </ul>
+        </div>
+
+        <h2>🔧 Partial Data Deletion</h2>
+        
+        <div class="highlight">
+            <h3>📝 Selective Data Removal</h3>
+            <p>You can also request deletion of specific data types without deleting your entire account:</p>
+            <ul>
+                <li><strong>Individual Moments:</strong> Delete specific photos or moments</li>
+                <li><strong>AI Generation History:</strong> Remove AI-generated content</li>
+                <li><strong>Friend Relationships:</strong> Remove specific friends</li>
+                <li><strong>Local Network Data:</strong> Clear discovery history</li>
+                <li><strong>Analytics Data:</strong> Remove usage tracking data</li>
+                <li><strong>Advertising Preferences:</strong> Reset ad personalization</li>
+            </ul>
+        </div>
+
+        <h2>🛡️ Data Security</h2>
+        
+        <div class="highlight">
+            <h3>🔒 Security Measures</h3>
+            <ul>
+                <li><strong>Encrypted Deletion:</strong> All data is securely deleted</li>
+                <li><strong>Verification Required:</strong> We verify your identity before deletion</li>
+                <li><strong>Secure Process:</strong> Deletion requests are processed securely</li>
+                <li><strong>Confirmation:</strong> You receive confirmation when deletion is complete</li>
+            </ul>
+        </div>
+
+        <h2>❓ Frequently Asked Questions</h2>
+        
+        <div class="highlight">
+            <h3>🤔 Common Questions</h3>
+            
+            <h4>Q: How long does account deletion take?</h4>
+            <p>A: Complete deletion takes 30 days. We start immediately and remove most data within 48 hours.</p>
+            
+            <h4>Q: Can I recover my account after deletion?</h4>
+            <p>A: No, account deletion is permanent and cannot be undone.</p>
+            
+            <h4>Q: What happens to my shared content?</h4>
+            <p>A: Content shared with friends will be removed from their view when your account is deleted.</p>
+            
+            <h4>Q: Can I delete only specific data?</h4>
+            <p>A: Yes, you can request partial data deletion without deleting your entire account.</p>
+            
+            <h4>Q: What if I change my mind?</h4>
+            <p>A: You can cancel the deletion request within 24 hours of submitting it.</p>
+        </div>
+
+        <div class="important">
+            <h2>📞 Need Help?</h2>
+            <p>If you have any questions about account deletion or need assistance, please contact us at:</p>
+            <p><strong>Email:</strong> contact.hnv@gmail.com</p>
+            <p><strong>Response Time:</strong> Within 48 hours</p>
+        </div>
+
+        <hr>
+        <p><em>This page complies with Google Play Data Safety requirements and applicable privacy laws.</em></p>
+        <p><em>Last updated: July 2025</em></p>
+    </div>
+</body>
+</html> 
